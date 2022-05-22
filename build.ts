@@ -8,7 +8,7 @@ async function main() {
   const { render } = require("./dist/server/entry-server.js");
 
   for (const file of await readdir("./src/pages")) {
-    const name = file.replace(/\.jsx$/, "").toLowerCase();
+    const name = file.replace(/\.tsx$/, "").toLowerCase();
     const url = name === "home" ? "/" : `/${name}`;
 
     await writeFile(
