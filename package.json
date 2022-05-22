@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && vite build && yarn run ts-node --project tsconfig.node.json build.ts",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && yarn run ts-node --project tsconfig.node.json build.ts",
     "preview": "vite preview"
   },
   "dependencies": {
