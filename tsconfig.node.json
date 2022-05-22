@@ -4,5 +4,10 @@
     "module": "esnext",
     "moduleResolution": "node"
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": ["vite.config.ts"]
 }
