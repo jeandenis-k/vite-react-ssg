@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir dist/static && vite build --ssr src/entry-server.tsx --outDir dist/server && yarn run ts-node --project tsconfig.node.json build.ts",
-    "preview": "npx serve dist/static"
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && yarn run ts-node --project tsconfig.node.json build.ts",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.0.0",
