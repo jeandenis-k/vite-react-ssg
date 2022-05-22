@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --outDir dist/static && vite build --ssr src/entry-server.tsx --outDir dist/server && yarn run ts-node --project tsconfig.node.json build.ts",
-    "preview": "vite preview"
+    "preview": "npx serve dist/static"
   },
   "dependencies": {
     "react": "^18.0.0",
