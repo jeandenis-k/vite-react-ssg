@@ -1,43 +1,43 @@
-import { useState } from "react";
-import "./App.css";
-import logo from "./logo.svg";
+import { Link, Route, Routes } from "react-router-dom";
+import About from "./pages/About";
+import Home from "./pages/Home";
+
+// Auto generates routes from files under ./pages
+// https://vitejs.dev/guide/features.html#glob-import
+const pages = import.meta.globEager("./pages/*.jsx");
+
+const routes = Object.keys(pages).map((path) => {
+  if (path === null || path === undefined) {
+    throw new Error("Unexpected null page name");
+  }
+  const name = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
+  if (!name) {
+    throw new Error(`Unexpected name: ${name}`);
+  }
+  return {
+    name,
+    path: name === "Home" ? "/" : `/${name.toLowerCase()}`,
+    component: pages[path].default,
+  };
+});
 
 export function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </>
   );
 }
