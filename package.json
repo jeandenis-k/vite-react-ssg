@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build:client": "vite build",
-    "build:ssg": "vite build --ssr src/entry-ssg.tsx --outDir dist/server",
+    "build:ssg": "vite build --ssr src/entry-ssg.tsx --outDir dist/ssg",
     "build": "yarn build:client && yarn build:ssg && yarn --silent run esbuild --bundle build.ts --platform=node | node -",
     "preview": "vite preview"
   },
